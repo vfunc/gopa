@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+service EntryService {
+  rpc EntryInfo (EntryInfoRequest) returns (EntryInfoReply) {}
+}
+
+message EntryInfoRequest {
+  uint64 uid = 1;
+}
+
+message EntryInfoReply {
+  Entry entry = 1;
+}
+
+message Entry {
+  uint64 id = 1;
+  string title = 2;
+  string content = 3;
+  string created_at = 4;
+  string updated_at = 5;
+}
