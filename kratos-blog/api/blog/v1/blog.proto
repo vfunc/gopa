@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package api.blog.v1;
+
+option go_package = "kratos-blog/api/blog/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.blog.v1";
+
+service Blog {
+  rpc CreateBlog (CreateBlogRequest) returns (CreateBlogReply);
+  rpc UpdateBlog (UpdateBlogRequest) returns (UpdateBlogReply);
+  rpc DeleteBlog (DeleteBlogRequest) returns (DeleteBlogReply);
+  rpc GetBlog (GetBlogRequest) returns (GetBlogReply);
+  rpc ListBlog (ListBlogRequest) returns (ListBlogReply);
+}
+
+message Entry {
+  int64 id = 1;
+  string title = 2;
+  string content = 3;
+}
+
+message CreateBlogRequest {
+  string title = 1;
+  string content = 2;
+}
+message CreateBlogReply {
+  Entry entry = 1;
+}
+
+message UpdateBlogRequest {}
+message UpdateBlogReply {}
+
+message DeleteBlogRequest {}
+message DeleteBlogReply {}
+
+message GetBlogRequest {
+  int64 id = 1;
+}
+message GetBlogReply {
+  Entry entry = 1;
+}
+
+message ListBlogRequest {}
+message ListBlogReply {
+  repeated Entry entries = 1;
+}
